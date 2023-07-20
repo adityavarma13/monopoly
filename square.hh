@@ -58,22 +58,3 @@ enum PropertyGroup
     GREEN,
     BLUE
 };
-
-/* struct SquareDataTable
-{
-    char*  name;
-    int     location;
-    bool    isProperty;
-    bool    isBuildable;
-    float   cost;
-    float   mortagageValue;
-    float   rentSite;
-    float   rentHouse1;
-    float   rentHouse2;
-    float   rentHouse3;
-    float   rentHouse4;
-    float   rentHotel;
-    PropertyGroup group;
-}
-
-extern SquareDataTable gDataTable[BOARDLOCATION_MAX]; */
