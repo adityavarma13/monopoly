@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <string>
 #include "error.hh"
 #include "board.hh"
@@ -402,8 +403,43 @@ private:
     std::string name;
     int location;
 public:
-    Square(std::string sName, int loc) : name(sName), location(loc) {}
+    Square(std::string sName, int loc) : name(sName), location(loc) 
+    {
+      std::cout << "Square Constructor called" << std::endl;
+    }
+    ~Square() 
+    {
+      std::cout << "Square Destructor called" << std::endl;
+    }
     virtual Error action(Player& player) = 0; // Pure virtual function (Interface)
+};
+
+class CommunityChest: public Square
+{
+public:
+    CommunityChest(std::string sName, int loc) : Square(sName, loc) 
+    {
+      // TODO: create card stack
+    }
+    Error action(Player& player) override
+    {
+        // TODO: charge 100 to the player landed
+        return E_NONE;
+    }
+};
+
+class Chance: public Square
+{
+public:
+    Chance(std::string sName, int loc) : Square(sName, loc) 
+    {
+      // TODO: create card stack
+    }
+    Error action(Player& player) override
+    {
+        // TODO: charge 100 to the player landed
+        return E_NONE;
+    }
 };
 
 class LuxuryTax: public Square
