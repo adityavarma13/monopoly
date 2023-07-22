@@ -1,23 +1,12 @@
-#pragma once
 #include <string>
 #include "error.hh"
-#include "square.hh"
+#include "player.hh"
 
-class Player
-{
-private:
-    std::string playerName;
-    float bankBalance;
-    int position;
-    bool isJailed;
-
-public:
-    Player(std::string name, float seedAmt);
-    float getbankBalance();
-    std::string getName();
-    Error jumpToPosition(BoardLocation loc);
-    Error imprision(BoardLocation loc);
-    Error freeFromJail(BoardLocation loc);
-    Error credit(float amt);
-    Error debit(float amt);
-};
+Player::Player(std::string name, float seedAmt){}
+float Player::getbankBalance(){}
+std::string Player::getName(){}
+Error Player::jumpToPosition(BoardLocation loc){}
+Error Player::imprision(BoardLocation loc){}
+Error Player::freeFromJail(BoardLocation loc){}
+Error Player::credit(float amt){}
+Error Player::debit(float amt){}

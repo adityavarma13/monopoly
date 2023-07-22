@@ -1,4 +1,8 @@
-#pragma once
+#ifndef SQUARE_HH
+#define SQUARE_HH
+
+#include "error.hh"
+#include "player.hh"
 
 enum BoardLocation{
     GO,
@@ -58,3 +62,95 @@ enum PropertyGroup
     GREEN,
     BLUE
 };
+
+class Square
+{
+protected:
+    std::string name;
+    int location;
+public:
+    Square(std::string sName, int loc);
+    ~Square();
+    virtual Error action(Player& player) = 0; // Pure virtual function (Interface)
+    virtual Error display() = 0;              // Interface
+};
+
+class CommunityChest: public Square
+{
+public:
+    CommunityChest(std::string sName, int loc);
+    ~CommunityChest();
+    Error action(Player& player) override;
+    Error display() override;
+};
+
+class Chance: public Square
+{
+public:
+    Chance(std::string sName, int loc);
+    ~Chance();
+    Error action(Player& player) override;
+    Error display() override;
+};
+
+class LuxuryTax: public Square
+{
+public:
+    LuxuryTax(std::string sName, int loc);
+    ~LuxuryTax();
+    Error action(Player& player) override;
+    Error display() override;
+};
+
+class IncomeTax: public Square
+{
+public:
+    IncomeTax(std::string sName, int loc);
+    ~IncomeTax();
+    Error action(Player& player) override;
+    Error display() override;
+};
+
+class FreePark_GO: public Square
+{
+public:
+    FreePark_GO(std::string sName, int loc);
+    ~FreePark_GO();
+    Error action(Player& player) override;
+    Error display() override;
+};
+
+class GoToJail: public Square
+{
+public:
+    GoToJail(std::string sName, int loc);
+    ~GoToJail();
+    Error action(Player& player) override;
+    Error display() override;
+};
+
+class Property : public Square
+{
+private:
+    bool    isPurchased; // check this before accessing owner pointer 
+    bool    isMoragaged;
+    bool    isBuildable;
+    Player* owner;
+    float   cost;
+    float   mortagageValue;
+    float   rentSite;
+    float   rentHouse1;
+    float   rentHouse2;
+    float   rentHouse3;
+    float   rentHouse4;
+    float   rentHotel;
+    PropertyGroup group;
+public:
+    Property(std::string sName, int loc, bool isBuild, float cost, float mortagageValue, float rentSite, float rentHouse1,
+            float rentHouse2, float rentHouse3, float rentHouse4, float rentHotel, PropertyGroup group);
+    ~Property();
+    Error action(Player& player) override;
+    Error display() override;
+};
+
+#endif

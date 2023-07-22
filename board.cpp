@@ -1,8 +1,8 @@
 #include <iostream>
 // #include <memory>
 #include "board.hh"
-#include "player.cpp"
-#include "square.cpp"
+#include "player.hh"
+#include "square.hh"
 
 Board::Board()
 {

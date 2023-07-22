@@ -1,10 +1,14 @@
 #include "board.hh"
-#include "board.cpp"
 
 int main()
 {
     // Initialize Board
     Board board;
+
+    for (auto square: board.squares) 
+    {
+        square->display();
+    }
     return 0;
 
 }

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DISPLAY_HH
+#define DISPLAY_HH
 
 /*
  https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
@@ -19,14 +20,14 @@ enum Style {
 };
 
 enum Foreground {
-  BLACK     = 30,
-  RED       = 31,
-  GREEN     = 32,
-  YELLOW    = 33,
-  BLUE      = 34,
-  MAGENTA   = 35,
-  CYAN      = 36,
-  WHITE     = 37
+  FOREGROUND_BLACK     = 30,
+  FOREGROUND_RED       = 31,
+  FOREGROUND_GREEN     = 32,
+  FOREGROUND_YELLOW    = 33,
+  FOREGROUND_BLUE      = 34,
+  FOREGROUND_MAGENTA   = 35,
+  FOREGROUND_CYAN      = 36,
+  FOREGROUND_WHITE     = 37
 };
 
 enum Background {
@@ -48,3 +49,5 @@ enum Background {
 
 void printFormat(std::string str, Foreground fcolor,
                  Background bcolor, Style style);
+
+#endif

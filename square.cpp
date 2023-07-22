@@ -1,128 +1,145 @@
-#pragma once
-
 #include <iostream>
 #include <string>
 #include "error.hh"
 #include "board.hh"
-#include "player.cpp"
+#include "player.hh"
 #include "square.hh"
+#include "display.hh"
 
-class Square
+
+Square::Square(std::string sName, int loc) : name(sName), location(loc) 
 {
-private:
-    std::string name;
-    int location;
-public:
-    Square(std::string sName, int loc) : name(sName), location(loc) 
-    {
-      std::cout << "Square Constructor called" << std::endl;
-    }
-    ~Square() 
-    {
-      std::cout << "Square Destructor called" << std::endl;
-    }
-    virtual Error action(Player& player) = 0; // Pure virtual function (Interface)
-};
+    std::cout << "Square Constructor called" << std::endl;
+}
 
-class CommunityChest: public Square
+Square::~Square() 
 {
-public:
-    CommunityChest(std::string sName, int loc) : Square(sName, loc) 
-    {
-      // TODO: create card stack
-    }
-    Error action(Player& player) override
-    {
-        // TODO: charge 100 to the player landed
-        return E_NONE;
-    }
-};
+    std::cout << "Square Destructor called" << std::endl;
+}
 
-class Chance: public Square
+
+CommunityChest::CommunityChest(std::string sName, int loc) : Square(sName, loc) 
 {
-public:
-    Chance(std::string sName, int loc) : Square(sName, loc) 
-    {
-      // TODO: create card stack
-    }
-    Error action(Player& player) override
-    {
-        // TODO: charge 100 to the player landed
-        return E_NONE;
-    }
-};
-
-class LuxuryTax: public Square
+    // TODO: create card stack
+}
+CommunityChest::~CommunityChest()
+{}
+Error CommunityChest::action(Player& player)
 {
-public:
-    LuxuryTax(std::string sName, int loc) : Square(sName, loc) {}
-    Error action(Player& player) override
-    {
-        // TODO: charge 100 to the player landed
-        return E_NONE;
-    }
-};
-
-class IncomeTax:public Square
+    // TODO: charge 100 to the player landed
+    return E_NONE;
+}
+Error CommunityChest::display()
 {
-public:
-    IncomeTax(std::string sName, int loc) : Square(sName, loc) {}
-    Error action(Player& player) override
-    {
-        // TODO: charge 200 to the player landed 
-        return E_NONE;
-    }
-};
+    // TODO: Print the square.
+    std::string displayOutput = "|--------------------------------------------------------|\n   "
+                                + this->name
+                                +"|--------------------------------------------------------|\n";
+    printFormat(displayOutput,FOREGROUND_BLACK,BACKGROUND_BRIGHT_WHITE,BOLD);
+    return E_NONE;
+}
 
-class FreePark_GO:public Square
+
+Chance::Chance(std::string sName, int loc) : Square(sName, loc) 
 {
-public:
-    FreePark_GO(std::string sName, int loc) : Square(sName, loc) {}
-    Error action(Player& player) override
-    {
-        // TODO: NOP
-        return E_NONE;
-    }
-};
-
-class GoToJail:public Square
+    // TODO: create card stack
+}
+Chance::~Chance() 
 {
-public:
-    GoToJail(std::string sName, int loc) : Square(sName, loc) {}
-    Error action(Player& player) override
-    {
-        // TODO: go to Jail
-        return E_NONE;
-    }
-};
-
-class Property : public Square
+    // TODO: create card stack
+}
+Error Chance::action(Player& player)
 {
-private:
-    bool    isPurchased; // check this before accessing owner pointer 
-    bool    isMoragaged;
-    bool    isBuildable;
-    Player* owner;
-    float   cost;
-    float   mortagageValue;
-    float   rentSite;
-    float   rentHouse1;
-    float   rentHouse2;
-    float   rentHouse3;
-    float   rentHouse4;
-    float   rentHotel;
-    PropertyGroup group;
-public:
-    Property(std::string sName, int loc, bool isBuild, float cost, float mortagageValue, float rentSite, float rentHouse1,
-            float rentHouse2, float rentHouse3, float rentHouse4, float rentHotel, PropertyGroup group)
-        : Square(sName, loc), isPurchased(false), isMoragaged(false), isBuildable(isBuild), owner(nullptr), cost(cost),
-          mortagageValue(mortagageValue), rentSite(rentSite), rentHouse1(rentHouse1), rentHouse2(rentHouse2), 
-          rentHouse3(rentHouse3), rentHouse4(rentHouse4), rentHotel(rentHotel)
-    {}
+    // TODO: charge 100 to the player landed
+    return E_NONE;
+}
+Error Chance::display()
+{
+    // TODO: Print the square.
+    std::string displayOutput = "|--------------------------------------------------------|\n   "
+                                + this->name
+                                +"|--------------------------------------------------------|\n";
+    printFormat(displayOutput, FOREGROUND_BLACK, BACKGROUND_BRIGHT_WHITE, BOLD);
+    return E_NONE;
+}
 
-    Error action(Player& player) override
-    {
-        // TODO: no square specific action
-        return E_NONE;
-    }
-};
+
+LuxuryTax::LuxuryTax(std::string sName, int loc) : Square(sName, loc) {}
+LuxuryTax::~LuxuryTax()
+{}
+Error LuxuryTax::action(Player& player)
+{
+    // TODO: charge 100 to the player landed
+    return E_NONE;
+}
+Error LuxuryTax::display()
+{
+    // TODO: Print the square.
+    return E_NONE;
+}
+
+
+IncomeTax::IncomeTax(std::string sName, int loc) : Square(sName, loc) {}
+IncomeTax::~IncomeTax()
+{
+}
+Error IncomeTax::action(Player &player)
+{
+    // TODO: charge 200 to the player landed 
+    return E_NONE;
+}
+Error IncomeTax::display()
+{
+    // TODO: Print the square.
+    return E_NONE;
+}
+
+
+FreePark_GO::FreePark_GO(std::string sName, int loc) : Square(sName, loc) {}
+FreePark_GO::~FreePark_GO()
+{}
+Error FreePark_GO::action(Player& player)
+{
+    // TODO: NOP
+    return E_NONE;
+}
+Error FreePark_GO::display()
+{
+    // TODO: Print the square.
+    return E_NONE;
+}
+
+
+GoToJail::GoToJail(std::string sName, int loc) : Square(sName, loc) {}
+GoToJail::~GoToJail()
+{}
+Error GoToJail::action(Player& player)
+{
+    // TODO: go to Jail
+    return E_NONE;
+}
+Error GoToJail::display()
+{
+    // TODO: Print the square.
+    return E_NONE;
+}
+
+
+Property::Property(std::string sName, int loc, bool isBuild, float cost, float mortagageValue, float rentSite, float rentHouse1,
+        float rentHouse2, float rentHouse3, float rentHouse4, float rentHotel, PropertyGroup group)
+    : Square(sName, loc), isPurchased(false), isMoragaged(false), isBuildable(isBuild), owner(nullptr), cost(cost),
+        mortagageValue(mortagageValue), rentSite(rentSite), rentHouse1(rentHouse1), rentHouse2(rentHouse2), 
+        rentHouse3(rentHouse3), rentHouse4(rentHouse4), rentHotel(rentHotel)
+{}
+Property::~Property()
+{}
+Error Property::action(Player& player)
+{
+    // TODO: no square specific action
+    return E_NONE;
+}
+Error Property::display()
+{
+    // TODO: Print the square.
+    return E_NONE;
+}
