@@ -4,6 +4,8 @@
 #include "error.hh"
 #include "player.hh"
 
+class Player; // forward declaration.
+
 enum BoardLocation{
     GO,
     MEDITERRANEAN_AVENUE,

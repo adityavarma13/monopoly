@@ -34,7 +34,7 @@ Error CommunityChest::display()
     // TODO: Print the square.
     std::string displayOutput = "|--------------------------------------------------------|\n   "
                                 + this->name
-                                +"|--------------------------------------------------------|\n";
+                                +"\n|--------------------------------------------------------|\n";
     printFormat(displayOutput,FOREGROUND_BLACK,BACKGROUND_BRIGHT_WHITE,BOLD);
     return E_NONE;
 }
@@ -58,7 +58,7 @@ Error Chance::display()
     // TODO: Print the square.
     std::string displayOutput = "|--------------------------------------------------------|\n   "
                                 + this->name
-                                +"|--------------------------------------------------------|\n";
+                                +"\n|--------------------------------------------------------|\n";
     printFormat(displayOutput, FOREGROUND_BLACK, BACKGROUND_BRIGHT_WHITE, BOLD);
     return E_NONE;
 }

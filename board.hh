@@ -2,7 +2,6 @@
 #define BOARD_HH
 
 #include "board.hh"
-#include "square.cpp"
 #include "square.hh"
 
 class Board

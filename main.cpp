@@ -1,5 +1,5 @@
 #include "board.hh"
-
+#include <iostream>
 int main()
 {
     // Initialize Board
@@ -7,6 +7,7 @@ int main()
 
     for (auto square: board.squares) 
     {
+        std::cout << "calling display" << std::endl;
         square->display();
     }
     return 0;

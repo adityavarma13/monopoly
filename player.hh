@@ -13,14 +13,14 @@ private:
     int position;
     bool isJailed;
 public:
-    Player(std::string name, float seedAmt);
-    float getbankBalance();
-    std::string getName();
-    Error jumpToPosition(BoardLocation loc);
-    Error imprision(BoardLocation loc);
-    Error freeFromJail(BoardLocation loc);
-    Error credit(float amt);
-    Error debit(float amt);
+    // Player(std::string name, float seedAmt);
+    // float getbankBalance();
+    // std::string getName();
+    // Error jumpToPosition(BoardLocation loc);
+    // Error imprision(BoardLocation loc);
+    // Error freeFromJail(BoardLocation loc);
+    // Error credit(float amt);
+    // Error debit(float amt);
 };
 
 #endif
