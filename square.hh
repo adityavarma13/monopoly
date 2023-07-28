@@ -4,7 +4,7 @@
 #include "error.hh"
 #include "player.hh"
 
-class Player; // forward declaration.
+class Player; // forward declaration to avoid circular dependnecy.
 
 enum BoardLocation{
     GO,
@@ -113,11 +113,20 @@ public:
     Error display() override;
 };
 
-class FreePark_GO: public Square
+class FreePark: public Square
 {
 public:
-    FreePark_GO(std::string sName, int loc);
-    ~FreePark_GO();
+    FreePark(std::string sName, int loc);
+    ~FreePark();
+    Error action(Player& player) override;
+    Error display() override;
+};
+
+class Go: public Square
+{
+public:
+    Go(std::string sName, int loc);
+    ~Go();
     Error action(Player& player) override;
     Error display() override;
 };

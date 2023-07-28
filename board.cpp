@@ -6,8 +6,8 @@
 
 Board::Board()
 {
-    std::cout << "Board Constructor called" << std::endl;
-    this->squares[GO] = new FreePark_GO("GO", static_cast<int>(GO));
+    // std::cout << "Board Constructor called" << std::endl;
+    this->squares[GO]                   = new Go("GO", static_cast<int>(GO));
     this->squares[MEDITERRANEAN_AVENUE] = new Property("MEDITERRANEAN_AVENUE", 
                                                        static_cast<int>(MEDITERRANEAN_AVENUE),
                                                        true, 60, 30, 2, 10, 30, 90, 160, 250, BROWN);
@@ -30,7 +30,7 @@ Board::Board()
     this->squares[CONNECTICUT_AVENUE]   = new Property("CONNECTICUT_AVENUE", 
                                                        static_cast<int>(CONNECTICUT_AVENUE),
                                                        true, 120, 60, 8, 40, 100, 300, 450, 600, LIGHT_BLUE);
-    this->squares[JAIL]                 = new FreePark_GO("JAIL", static_cast<int>(JAIL));
+    this->squares[JAIL]                 = new FreePark("JAIL", static_cast<int>(JAIL));
     this->squares[ST_CHARLS_PLACE]      = new Property("ST_CHARLS_PLACE", 
                                                        static_cast<int>(ST_CHARLS_PLACE),
                                                        true, 140, 70, 10, 50, 150, 450, 625, 750, PINK);
@@ -57,7 +57,7 @@ Board::Board()
     this->squares[NEY_YORK_AVENUE]      = new Property("NEY_YORK_AVENUE", 
                                                        static_cast<int>(NEY_YORK_AVENUE),
                                                        true, 200, 100, 16, 80, 220, 600, 800, 1000, ORANGE);
-    this->squares[FREE_PARKING]         = new FreePark_GO("FREE_PARKING", 
+    this->squares[FREE_PARKING]         = new FreePark("FREE_PARKING", 
                                                        static_cast<int>(FREE_PARKING));
     this->squares[KENTUCKY_AVENUE]      = new Property("KENTUCKY_AVENUE", 
                                                        static_cast<int>(KENTUCKY_AVENUE),
@@ -152,5 +152,5 @@ Board::~Board()
     delete this->squares[PARK_PLACE];
     delete this->squares[LUXURY_TAX];
     delete this->squares[BROADWALK];
-    std::cout << "Board Destructor called" << std::endl;
+    // std::cout << "Board Destructor called" << std::endl;
 }
