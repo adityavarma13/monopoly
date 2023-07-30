@@ -27,9 +27,7 @@ Error CommunityChest::action(Player& player)
 Error CommunityChest::display(std::string info)
 {
     // TODO: Print the square.
-    std::string displayOutput = "|--------------------------------------------------------|\n   "
-                                + this->name + "\n" + info
-                                +"\n|--------------------------------------------------------|\n";
+    std::string displayOutput = this->name + "\n" + info;
     printFormat(displayOutput,FOREGROUND_BLACK,BACKGROUND_BRIGHT_WHITE,BOLD);
     return E_NONE;
 }
@@ -51,9 +49,7 @@ Error Chance::action(Player& player)
 Error Chance::display(std::string info)
 {
     // TODO: Print the square.
-    std::string displayOutput = "|--------------------------------------------------------|\n   "
-                                + this->name + "\n" + info
-                                +"\n|--------------------------------------------------------|\n";
+    std::string displayOutput = this->name + "\n" + info;
     printFormat(displayOutput, FOREGROUND_BLACK, BACKGROUND_BRIGHT_WHITE, BOLD);
     return E_NONE;
 }
@@ -69,9 +65,7 @@ Error LuxuryTax::action(Player& player)
 Error LuxuryTax::display(std::string info)
 {
     // TODO: Print the square.
-    std::string displayOutput = "|--------------------------------------------------------|\n   "
-                                + this->name + "\n" + info
-                                +"\n|--------------------------------------------------------|\n";
+    std::string displayOutput = this->name + "\n" + info;
     printFormat(displayOutput, FOREGROUND_RED, BACKGROUND_BRIGHT_WHITE, BOLD);
     return E_NONE;
 }
@@ -87,9 +81,7 @@ Error IncomeTax::action(Player &player)
 Error IncomeTax::display(std::string info)
 {
     // TODO: Print the square.
-    std::string displayOutput = "|--------------------------------------------------------|\n   "
-                                + this->name + "\n" + info
-                                +"\n|--------------------------------------------------------|\n";
+    std::string displayOutput = this->name + "\n" + info;
     printFormat(displayOutput, FOREGROUND_RED, BACKGROUND_BRIGHT_WHITE, BOLD);
     return E_NONE;
 }
@@ -105,9 +97,7 @@ Error FreePark::action(Player& player)
 Error FreePark::display(std::string info)
 {
     // TODO: Print the square.
-    std::string displayOutput = "|--------------------------------------------------------|\n   "
-                                + this->name + "\n" + info
-                                +"\n|--------------------------------------------------------|\n";
+    std::string displayOutput = this->name + "\n" + info;
     printFormat(displayOutput, FOREGROUND_BLACK, BACKGROUND_BRIGHT_WHITE, BOLD);   
     return E_NONE;
 }
@@ -123,9 +113,7 @@ Error Go::action(Player& player)
 Error Go::display(std::string info)
 {
     // TODO: Print the square.
-    std::string displayOutput = "|--------------------------------------------------------|\n   "
-                                + this->name + "\n" + info
-                                +"\n|--------------------------------------------------------|\n";
+    std::string displayOutput = this->name + "\n" + info;
     printFormat(displayOutput, FOREGROUND_GREEN, BACKGROUND_BRIGHT_WHITE, BOLD);   
     return E_NONE;
 }
@@ -140,9 +128,7 @@ Error GoToJail::action(Player& player)
 Error GoToJail::display(std::string info)
 {
     // TODO: Print the square.
-    std::string displayOutput = "|--------------------------------------------------------|\n   "
-                                + this->name + "\n" + info
-                                +"\n|--------------------------------------------------------|\n";
+    std::string displayOutput = this->name + "\n" + info;
     printFormat(displayOutput, FOREGROUND_RED, BACKGROUND_BRIGHT_WHITE, BOLD);
     return E_NONE;
 }
@@ -163,9 +149,7 @@ Error Property::action(Player& player)
 Error Property::display(std::string info)
 {
     // TODO: Print the square.
-    std::string displayOutput = "|--------------------------------------------------------|\n   "
-                                + this->name + "\n" + info
-                            +"   \n|--------------------------------------------------------|\n";
+    std::string displayOutput = this->name + "\n" + info;
     switch (this->group)
     {
     case RAIL:

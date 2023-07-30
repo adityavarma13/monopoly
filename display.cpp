@@ -23,8 +23,13 @@ void printBoard(Board& board, std::vector<Player> playerList)
         for (Player plyr: playerList)
         {
             if (sqrLoacation == plyr.getPostion())
+            {
                 info += plyr.getName();
+                info += '\n';
+            }
         }
+        std::cout << "|--------------------------------------------------------|" << std::endl;
         board.squares[i]->display(info);
     }
+    std::cout << "|--------------------------------------------------------|\n" << std::endl;
 }

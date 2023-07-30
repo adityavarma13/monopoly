@@ -36,14 +36,12 @@ int main()
         // {
             
         // }
-        
+
         std::string dice;
         std::cin >> dice;
     }
     
     
     // Print the board
-
     return 0;
-
 }
