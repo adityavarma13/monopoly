@@ -24,7 +24,7 @@ void printBoard(Board& board, std::vector<Player> playerList)
         {
             if (sqrLoacation == plyr.getPostion())
             {
-                info += "                        \u2617 ";
+                info += "                      \u2617 ";
                 info += plyr.getName();
                 info += "\n                       \u0024 ";
                 info += std::to_string(plyr.getbankBalance());
