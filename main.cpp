@@ -109,8 +109,10 @@ int main()
             std::cout << "Moving player " << plyr.getName() << " to " << location << std::endl;
             plyr.jumpToPosition(location);
             
-            std::cout << "\nPainting new board\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
-            sleep(2);
+            do {
+            std::cout << "Press enter to paint new board\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+            } while (std::cin.get() != '\n');
+            
             printBoard(board, playerList);
         }
     }
