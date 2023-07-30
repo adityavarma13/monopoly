@@ -53,4 +53,5 @@ void printFormat(std::string str, Foreground fcolor,
                  Background bcolor, Style style);
 
 void printBoard(Board &board, std::vector<Player> playerList);
+void rollDice(int& dice1, int& dice2);
 #endif

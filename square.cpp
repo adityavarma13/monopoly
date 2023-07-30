@@ -144,6 +144,7 @@ Property::~Property() {}
 Error Property::action(Player& player)
 {
     // TODO: no square specific action
+    
     return E_NONE;
 }
 Error Property::display(std::string info)
