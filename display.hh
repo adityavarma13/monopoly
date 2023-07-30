@@ -1,6 +1,8 @@
 #ifndef DISPLAY_HH
 #define DISPLAY_HH
-
+#include <vector>
+#include "player.hh"
+#include "board.hh"
 /*
  https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
  https://www.jdawiseman.com/papers/trivia/monopoly-rents.html
@@ -50,4 +52,5 @@ enum Background {
 void printFormat(std::string str, Foreground fcolor,
                  Background bcolor, Style style);
 
+void printBoard(Board &board, std::vector<Player> playerList);
 #endif

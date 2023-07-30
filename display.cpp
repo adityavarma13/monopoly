@@ -2,13 +2,29 @@
 #include <sstream> // for ostringstream
 #include <string>
 #include "display.hh"
+#include "board.hh"
+#include <vector>
 
-using namespace std;
 
 void printFormat(std::string str, Foreground fcolor,
                  Background bcolor, Style style)
 {
-    ostringstream out;
+    std::ostringstream out;
     out << "\033[" << style << ";" << fcolor << ";" << bcolor << "m";
-    cout << out.str() << str;
+    std::cout << out.str() << str;
+}
+
+void printBoard(Board& board, std::vector<Player> playerList)
+{
+    for (int i=0; i < BOARDLOCATION_MAX; i++)
+    {
+        std::string info = "";
+        BoardLocation sqrLoacation = board.squares[i]->getLocation();
+        for (Player plyr: playerList)
+        {
+            if (sqrLoacation == plyr.getPostion())
+                info += plyr.getName();
+        }
+        board.squares[i]->display(info);
+    }
 }

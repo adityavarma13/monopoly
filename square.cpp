@@ -7,18 +7,14 @@
 #include "display.hh"
 
 
-Square::Square(std::string sName, int loc) : name(sName), location(loc) 
+Square::Square(std::string sName, BoardLocation loc) : name(sName), location(loc) {}
+Square::~Square() {}
+BoardLocation Square::getLocation()
 {
-    // std::cout << "Square Constructor called" << std::endl;
+    return this->location;
 }
 
-Square::~Square() 
-{
-    // std::cout << "Square Destructor called" << std::endl;
-}
-
-
-CommunityChest::CommunityChest(std::string sName, int loc) : Square(sName, loc) 
+CommunityChest::CommunityChest(std::string sName, BoardLocation loc) : Square(sName, loc) 
 {
     // TODO: create card stack
 }
@@ -28,18 +24,18 @@ Error CommunityChest::action(Player& player)
     // TODO: charge 100 to the player landed
     return E_NONE;
 }
-Error CommunityChest::display()
+Error CommunityChest::display(std::string info)
 {
     // TODO: Print the square.
     std::string displayOutput = "|--------------------------------------------------------|\n   "
-                                + this->name
+                                + this->name + "\n" + info
                                 +"\n|--------------------------------------------------------|\n";
     printFormat(displayOutput,FOREGROUND_BLACK,BACKGROUND_BRIGHT_WHITE,BOLD);
     return E_NONE;
 }
 
 
-Chance::Chance(std::string sName, int loc) : Square(sName, loc) 
+Chance::Chance(std::string sName, BoardLocation loc) : Square(sName, loc) 
 {
     // TODO: create card stack
 }
@@ -52,107 +48,107 @@ Error Chance::action(Player& player)
     // TODO: charge 100 to the player landed
     return E_NONE;
 }
-Error Chance::display()
+Error Chance::display(std::string info)
 {
     // TODO: Print the square.
     std::string displayOutput = "|--------------------------------------------------------|\n   "
-                                + this->name
+                                + this->name + "\n" + info
                                 +"\n|--------------------------------------------------------|\n";
     printFormat(displayOutput, FOREGROUND_BLACK, BACKGROUND_BRIGHT_WHITE, BOLD);
     return E_NONE;
 }
 
 
-LuxuryTax::LuxuryTax(std::string sName, int loc) : Square(sName, loc) {}
+LuxuryTax::LuxuryTax(std::string sName, BoardLocation loc) : Square(sName, loc) {}
 LuxuryTax::~LuxuryTax() {}
 Error LuxuryTax::action(Player& player)
 {
     // TODO: charge 100 to the player landed
     return E_NONE;
 }
-Error LuxuryTax::display()
+Error LuxuryTax::display(std::string info)
 {
     // TODO: Print the square.
     std::string displayOutput = "|--------------------------------------------------------|\n   "
-                                + this->name
+                                + this->name + "\n" + info
                                 +"\n|--------------------------------------------------------|\n";
     printFormat(displayOutput, FOREGROUND_RED, BACKGROUND_BRIGHT_WHITE, BOLD);
     return E_NONE;
 }
 
 
-IncomeTax::IncomeTax(std::string sName, int loc) : Square(sName, loc) {}
+IncomeTax::IncomeTax(std::string sName, BoardLocation loc) : Square(sName, loc) {}
 IncomeTax::~IncomeTax() {}
 Error IncomeTax::action(Player &player)
 {
     // TODO: charge 200 to the player landed 
     return E_NONE;
 }
-Error IncomeTax::display()
+Error IncomeTax::display(std::string info)
 {
     // TODO: Print the square.
     std::string displayOutput = "|--------------------------------------------------------|\n   "
-                                + this->name
+                                + this->name + "\n" + info
                                 +"\n|--------------------------------------------------------|\n";
     printFormat(displayOutput, FOREGROUND_RED, BACKGROUND_BRIGHT_WHITE, BOLD);
     return E_NONE;
 }
 
 
-FreePark::FreePark(std::string sName, int loc) : Square(sName, loc) {}
+FreePark::FreePark(std::string sName, BoardLocation loc) : Square(sName, loc) {}
 FreePark::~FreePark() {}
 Error FreePark::action(Player& player)
 {
     // TODO: NOP
     return E_NONE;
 }
-Error FreePark::display()
+Error FreePark::display(std::string info)
 {
     // TODO: Print the square.
     std::string displayOutput = "|--------------------------------------------------------|\n   "
-                                + this->name
+                                + this->name + "\n" + info
                                 +"\n|--------------------------------------------------------|\n";
     printFormat(displayOutput, FOREGROUND_BLACK, BACKGROUND_BRIGHT_WHITE, BOLD);   
     return E_NONE;
 }
 
 
-Go::Go(std::string sName, int loc) : Square(sName, loc) {}
+Go::Go(std::string sName, BoardLocation loc) : Square(sName, loc) {}
 Go::~Go() {}
 Error Go::action(Player& player)
 {
     // TODO: Credit 200 Bucks
     return E_NONE;
 }
-Error Go::display()
+Error Go::display(std::string info)
 {
     // TODO: Print the square.
     std::string displayOutput = "|--------------------------------------------------------|\n   "
-                                + this->name
+                                + this->name + "\n" + info
                                 +"\n|--------------------------------------------------------|\n";
     printFormat(displayOutput, FOREGROUND_GREEN, BACKGROUND_BRIGHT_WHITE, BOLD);   
     return E_NONE;
 }
 
-GoToJail::GoToJail(std::string sName, int loc) : Square(sName, loc) {}
+GoToJail::GoToJail(std::string sName, BoardLocation loc) : Square(sName, loc) {}
 GoToJail::~GoToJail() {}
 Error GoToJail::action(Player& player)
 {
     // TODO: go to Jail
     return E_NONE;
 }
-Error GoToJail::display()
+Error GoToJail::display(std::string info)
 {
     // TODO: Print the square.
     std::string displayOutput = "|--------------------------------------------------------|\n   "
-                                + this->name
+                                + this->name + "\n" + info
                                 +"\n|--------------------------------------------------------|\n";
     printFormat(displayOutput, FOREGROUND_RED, BACKGROUND_BRIGHT_WHITE, BOLD);
     return E_NONE;
 }
 
 
-Property::Property(std::string sName, int loc, bool isBuild, float cost, float mortagageValue, float rentSite, float rentHouse1,
+Property::Property(std::string sName, BoardLocation loc, bool isBuild, float cost, float mortagageValue, float rentSite, float rentHouse1,
         float rentHouse2, float rentHouse3, float rentHouse4, float rentHotel, PropertyGroup group)
     : Square(sName, loc), isPurchased(false), isMoragaged(false), isBuildable(isBuild), owner(nullptr), cost(cost),
         mortagageValue(mortagageValue), rentSite(rentSite), rentHouse1(rentHouse1), rentHouse2(rentHouse2), 
@@ -164,11 +160,11 @@ Error Property::action(Player& player)
     // TODO: no square specific action
     return E_NONE;
 }
-Error Property::display()
+Error Property::display(std::string info)
 {
     // TODO: Print the square.
     std::string displayOutput = "|--------------------------------------------------------|\n   "
-                                + this->name
+                                + this->name + "\n" + info
                             +"   \n|--------------------------------------------------------|\n";
     switch (this->group)
     {

@@ -2,7 +2,7 @@
 #define SQUARE_HH
 
 #include "error.hh"
-#include "player.hh"
+#include <string>
 
 class Player; // forward declaration to avoid circular dependnecy.
 
@@ -69,75 +69,76 @@ class Square
 {
 protected:
     std::string name;
-    int location;
+    BoardLocation location;
 public:
-    Square(std::string sName, int loc);
+    Square(std::string sName, BoardLocation loc);
     ~Square();
+    BoardLocation getLocation();
     virtual Error action(Player& player) = 0; // Pure virtual function (Interface)
-    virtual Error display() = 0;              // Interface
+    virtual Error display(std::string info) = 0;              // Interface
 };
 
 class CommunityChest: public Square
 {
 public:
-    CommunityChest(std::string sName, int loc);
+    CommunityChest(std::string sName, BoardLocation loc);
     ~CommunityChest();
     Error action(Player& player) override;
-    Error display() override;
+    Error display(std::string info) override;
 };
 
 class Chance: public Square
 {
 public:
-    Chance(std::string sName, int loc);
+    Chance(std::string sName, BoardLocation loc);
     ~Chance();
     Error action(Player& player) override;
-    Error display() override;
+    Error display(std::string info) override;
 };
 
 class LuxuryTax: public Square
 {
 public:
-    LuxuryTax(std::string sName, int loc);
+    LuxuryTax(std::string sName, BoardLocation loc);
     ~LuxuryTax();
     Error action(Player& player) override;
-    Error display() override;
+    Error display(std::string info) override;
 };
 
 class IncomeTax: public Square
 {
 public:
-    IncomeTax(std::string sName, int loc);
+    IncomeTax(std::string sName, BoardLocation loc);
     ~IncomeTax();
     Error action(Player& player) override;
-    Error display() override;
+    Error display(std::string info) override;
 };
 
 class FreePark: public Square
 {
 public:
-    FreePark(std::string sName, int loc);
+    FreePark(std::string sName, BoardLocation loc);
     ~FreePark();
     Error action(Player& player) override;
-    Error display() override;
+    Error display(std::string info) override;
 };
 
 class Go: public Square
 {
 public:
-    Go(std::string sName, int loc);
+    Go(std::string sName, BoardLocation loc);
     ~Go();
     Error action(Player& player) override;
-    Error display() override;
+    Error display(std::string info) override;
 };
 
 class GoToJail: public Square
 {
 public:
-    GoToJail(std::string sName, int loc);
+    GoToJail(std::string sName, BoardLocation loc);
     ~GoToJail();
     Error action(Player& player) override;
-    Error display() override;
+    Error display(std::string info) override;
 };
 
 class Property : public Square
@@ -157,11 +158,11 @@ private:
     float   rentHotel;
     PropertyGroup group;
 public:
-    Property(std::string sName, int loc, bool isBuild, float cost, float mortagageValue, float rentSite, float rentHouse1,
+    Property(std::string sName, BoardLocation loc, bool isBuild, float cost, float mortagageValue, float rentSite, float rentHouse1,
             float rentHouse2, float rentHouse3, float rentHouse4, float rentHotel, PropertyGroup group);
     ~Property();
     Error action(Player& player) override;
-    Error display() override;
+    Error display(std::string info) override;
 };
 
 #endif
